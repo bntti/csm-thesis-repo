@@ -94,8 +94,8 @@ def draw(
     sns.barplot(data=df_long, x="Instance", y="Edit Distance / Lower Bound", hue="algorithm", hue_order=ALGORITHMS)
 
     plt.ylim(0.98, None)
-    plt.title("Edit Distance / Lower Bound")
-    plt.ylabel("")
+    plt.ylabel("Edit distance / lower bound")
+    plt.title("CPDAG aggregation problem, common benchmark Bayesian networks")
     plt.savefig(filename, dpi=150)
     plt.show()
 

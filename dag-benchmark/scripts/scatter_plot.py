@@ -7,9 +7,9 @@ from config import DATASET, PLOT_DIR
 from file_manager import get_result_dir
 
 
-def get_data(path: str, extra_ignored: list[str]) -> dict[str, list[float]]:
+def get_data(path: str, ignored: list[str]) -> dict[str, list[float]]:
     """Read the data."""
-    ignored = ["threshold", "empty", "original", *extra_ignored]
+    included = ["bitdp", "greedy", "median"]
     data = {}
     for file in os.listdir(path):
         file_path = f"{path}/{file}"
@@ -35,7 +35,7 @@ def get_data(path: str, extra_ignored: list[str]) -> dict[str, list[float]]:
                 mn_score = min(mn_score, score)
 
         for alg, score in results.items():
-            if alg in ignored or alg == "lower_bound":
+            if alg not in included or alg in ignored:
                 continue
             if alg not in data:
                 data[alg] = []
@@ -45,6 +45,7 @@ def get_data(path: str, extra_ignored: list[str]) -> dict[str, list[float]]:
 
 def draw(
     data: dict[str, list[float]],
+    size: int,
     filename: str,
 ) -> None:
     """Draw the scatter plot."""
@@ -60,7 +61,6 @@ def draw(
         "bitdp": "#1f77b4",
         "greedy": "#ff7f0e",
         "median": "#2ca02c",
-        "original": "#d62728",
         "lower_bound": "#9467bd",
     }
 
@@ -72,8 +72,12 @@ def draw(
     ax.set_xticks(range(len(data)))
     ax.set_xticklabels(sorted_keys)
 
-    plt.ylim(0.998, None)
-    plt.title("Edit Distance / Lower Bound (n=23)")
+    if size < 50:
+        plt.ylim(0.998, None)
+    else:
+        plt.ylim(0.9998, None)
+    plt.ylabel("Edit distance / lower bound")
+    plt.title(f"DAG aggregation problem, artificial instances where n={size}")
     plt.savefig(filename, dpi=150)
     plt.show()
 
@@ -85,7 +89,7 @@ def main() -> None:
     ignored = [] if int(size) < 30 else ["bitdp"]
     data = get_data(path, ignored)
 
-    draw(data, f"{PLOT_DIR}/scatter.png")
+    draw(data, size, f"{PLOT_DIR}/scatter-{size}.png")
 
 
 if __name__ == "__main__":

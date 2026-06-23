@@ -65,7 +65,8 @@ def draw(
     ax.set_xticklabels(sorted_keys)
 
     plt.ylim(0.98, None)
-    plt.title("Edit Distance / Lower Bound (n=15)")
+    plt.ylabel("Edit distance / lower bound")
+    plt.title("CPDAG aggregation problem, artificial instances where n=15")
     plt.savefig(filename, dpi=150)
     plt.show()
 

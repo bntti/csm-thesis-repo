@@ -32,7 +32,7 @@ def get_num_nodes(path: str) -> int:
 def get_data_instances() -> list[str]:
     """Get result paths sorted by node count."""
     paths = []
-    path = get_result_dir("data")
+    path = get_result_dir("bn")
     for file in os.listdir(path):
         file_path = f"{path}/{file}"
         paths.append(file_path)

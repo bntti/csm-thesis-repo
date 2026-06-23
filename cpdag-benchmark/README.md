@@ -6,11 +6,11 @@ Benchmarking scripts stored in `./scripts/`, and algorithms stored in `./src/`
 
 Store dataset instances in `./inputs/[dataset]/`
 
-| Script            | Description                                                                |
-| ----------------- | -------------------------------------------------------------------------- |
-| `run.py`          | Compiles c++ and runs the benchmark given the `DATASET=[dataset]` env.     |
-| `bar_plot.py`     | Creates a bar plot from the common Bayesian network benchmark dag results, |
-| `scatter_plot.py` | Creates a scatter plot given the `DATASET=[dataset]` env.                  |
+| Script            | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| `run.py`          | Compiles c++ and runs the benchmark given the `DATASET=[dataset]` env.                         |
+| `bar_plot.py`     | Creates a bar plot from the common Bayesian network benchmark dag result. Assumes `DATASET=bn` |
+| `scatter_plot.py` | Creates a scatter plot given the `DATASET=[dataset]` env.                                      |
 
 ### Running manually
 

@@ -1,5 +1,6 @@
 # CSM thesis repository
 
-| Folder          | Description                                                   |
-| --------------- | ------------------------------------------------------------- |
-| CPDAG-benchmark | CPDAG aggregation problem benchmarking utility and algorithms |
+| Folder               | Description                                                   |
+| -------------------- | ------------------------------------------------------------- |
+| `./cpdag-benchmark/` | CPDAG aggregation problem benchmarking utility and algorithms |
+| `./dag-benchmark/`   | DAG aggregation problem benchmarking utility and algorithms   |

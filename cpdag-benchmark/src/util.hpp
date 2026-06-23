@@ -1,9 +1,6 @@
 #pragma once
 #include <algorithm>
-#include <random>
 #include <vector>
-
-extern std::mt19937 rng;
 
 template <class T> int inline vcount(std::vector<T> &v, T x) {
   return std::count(v.begin(), v.end(), x);
@@ -12,8 +9,6 @@ template <class T> int inline vcount(std::vector<T> &v, T x) {
 template <class T> void inline verase(std::vector<T> &v, T x) {
   v.erase(std::remove(v.begin(), v.end(), x), v.end());
 }
-
-int rand_int(int a, int b);
 
 bool cycle(std::vector<std::vector<int>> &v, int n);
 
